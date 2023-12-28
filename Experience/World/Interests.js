@@ -38,6 +38,10 @@ export default class Interests {
   setInterests() {
     this.points = [
       {
+        position: new THREE.Vector3(1, 1.2, -2),
+        element: document.querySelector('.portnet')
+      },
+      {
         position: new THREE.Vector3(2.62, 1.2, 0.9),
         element: document.querySelector('.devFactory')
       },
@@ -113,7 +117,7 @@ export default class Interests {
     const devFactory = document.querySelector('.devFactory')
     const amosys = document.querySelector('.amosys')
     const oracle = document.querySelector('.oracle')
-    const arcadia = document.querySelector('.arcadia')
+    const portnet = document.querySelector('.portnet')
     const nabi = document.querySelector('.nabi')
     const lumen = document.querySelector('.lumen')
 
@@ -139,7 +143,6 @@ export default class Interests {
     let infoPanelRightStyle = '0'
 
     const infos = [
-      // jobs
       {
         'image': '/images/img-devFactory.png',
         'title': 'Dev Factory',
@@ -194,71 +197,24 @@ export default class Interests {
         ],
         'website': 'https://www.oracle.com/ma/corporate/contact/'
       },
-      /* Restaurants & Cafés
       {
-        'image': '/images/img-arcadia.jpg',
-        'logo': '/images/logo-arcadia.svg',
-        'title': 'Arcadia Restaurant',
-        'lead': `Authentic Mediterranean dining at the heart of Lausanne's arts district`,
-        'description': `Arcadia Restaurant, with its seven iconic arches, opens the door to a la carte Mediterranean cuisine, balancing fresh flavours with seasonal local ingredients and products. Our menu is served alongside an inspired cocktail offering and a selection of local beer and wines. <br><br>
-        For those looking for a relaxed, tasty, and inclusive dining experience, whether at lunch for everyday cooking or in the evening for a more special occasion. Always in a relaxed and friendly environment.`,
-        'schedule': [
-          '10:00 - 23:00',
-          'Closed',
-          '10:00 - 23:00',
-          '10:00 - 23:00',
-          '10:00 - 23:00',
-          '10:00 - 23:00',
-          '10:00 - 18:00'
+        'image': '/images/img-portnet.png',
+        'title': 'Portnet',
+        'role': 'Consultant Software engineer',
+        'from': '01/03/2024',
+        'too': 'present',
+        'lead': `PortNet is a digital platform that serves as a single window for managing logistics and trade operations in Moroccan ports. It connects various stakeholders, including customs, transport, and logistics companies, facilitating the exchange of information and the electronic processing of documents for efficient import and export activities.`,
+        'tasks': [
+          'Migrated legacy J2EE projects to a modern microservices architecture using React, Spring, and Kubernetes, improving scalability and performance',
+          'Developed an AI-driven interactive platform for Portnet TradeSense, enabling users to query import/export processes, enhancing user engagement and experience.',
+          'Led the design, development, and deployment of a scalable platform using Kubernetes, ensuring high availability, security, and efficient microservices management.',
         ],
         'contact': [
-          '+41 21 318 44 10',
-          'info@arcadiarestaurant.ch'
+          '+212 520-473100',
+          'contact@portnet.ma'
         ],
-        'website': 'https://www.arcadiarestaurant.ch/'
+        'website': 'https://portnet.ma/'
       },
-      {
-        'image': '/images/img-nabi.jpg',
-        'logo': '/images/logo-nabi.svg',
-        'title': 'Le Nabi Café-Restaurant',
-        'lead': `Traditional cuisine to savour before or after a visit to Plateforme 10!`,
-        'description': `The menu aims to be inviting, familial, yet inventive. Traditional cooking is restyled while the menu follows the seasons by adapting to the harvest of local producers. The drinks are artisanal. Meticulous service at reasonable prices for a convivial moment that everyone can afford to enjoy. Kids are very much welcome, too. Menu selections are designed for savory discoveries, and a play area encourages creativity.`,
-        'schedule': [
-          'Closed',
-          '09:30 - 18:00',
-          '09:30 - 18:00',
-          '09:30 - 20:00',
-          '09:30 - 18:00',
-          '09:30 - 18:00',
-          '09:30 - 18:00'
-        ],
-        'contact': [
-          '+41 21 311 02 90',
-          'info@lenabi.ch'
-        ],
-        'website': 'https://www.devFactory.ch/en/cafe-restaurant-2/'
-      },
-      {
-        'image': '/images/img-lumen.jpg',
-        'logo': '/images/logo-lumen.svg',
-        'title': 'Lumen Café',
-        'lead': `A spontaneous and fast cuisine with authentic artisanal products`,
-        'description': `Le Café Lumen invites you to discover its menu of quick and spontaneous dishes that use artisanal products served simply on a board, in a clay bowl, or nestled between two slices of focaccia. Here you will find the best of the region’s culinary tradition. All our drinks are artisanal with a fine selection of craft cider and beer, wine, and homemade non-alcoholic beverages. Our coffee is freshly roasted. We’re a stop along the region’s greenway, the Voie Verte foot and bicycle path, with takeaway service available.`,
-        'schedule': [
-          '10:00 - 18:00',
-          'Closed',
-          '10:00 - 18:00',
-          '10:00 - 20:00',
-          '10:00 - 18:00',
-          '10:00 - 18:00',
-          '10:00 - 18:00'
-        ],
-        'contact': [
-          '+41 21 311 02 90',
-          'info@cafelumen.ch'
-        ],
-        'website': 'https://amosys.ch/de/cafe-lumen/'
-      }*/
     ]
 
     if (this.device === 'desktop') {
@@ -317,67 +273,21 @@ export default class Interests {
         infoPanelWebsite.href = infos[2].website
       });
     }
-    if (arcadia) {
-      arcadia.addEventListener('click', () => {
+    if (portnet) {
+      portnet.addEventListener('click', () => {
+        let taskHTML = ''
+        infos[3].tasks.forEach((task) => {
+          taskHTML += `<li>${task}</li>`
+        })
         this.scrolling.target = 0
         infoPanel.style.right = '0'
-        infoPanelImage.src = infos[3].image
-        infoPanelLogo.src = infos[3].logo
+        infoPanelImage.src = infos[3].image 
         infoPanelTitle.innerHTML = infos[3].title
-        infoPanelLead.innerHTML = infos[3].lead
-        infoPanelDescription.innerHTML = infos[3].description
-        infoPanelMo.innerHTML = infos[3].schedule[0]
-        infoPanelTu.innerHTML = infos[3].schedule[1]
-        infoPanelWe.innerHTML = infos[3].schedule[2]
-        infoPanelTh.innerHTML = infos[3].schedule[3]
-        infoPanelFr.innerHTML = infos[3].schedule[4]
-        infoPanelSa.innerHTML = infos[3].schedule[5]
-        infoPanelSu.innerHTML = infos[3].schedule[6]
+        infoPanelLead.innerHTML = infos[3].lead  
+        infoPanelTasks.innerHTML = `<ol>${taskHTML}</ol>`
         infoPanelPhone.innerHTML = infos[3].contact[0]
         infoPanelEmail.innerHTML = infos[3].contact[1]
         infoPanelWebsite.href = infos[3].website
-      });
-    }
-    if (nabi) {
-      nabi.addEventListener('click', () => {
-        this.scrolling.target = 0
-        infoPanel.style.right = '0'
-        infoPanelImage.src = infos[4].image
-        infoPanelLogo.src = infos[4].logo
-        infoPanelTitle.innerHTML = infos[4].title
-        infoPanelLead.innerHTML = infos[4].lead
-        infoPanelDescription.innerHTML = infos[4].description
-        infoPanelMo.innerHTML = infos[4].schedule[0]
-        infoPanelTu.innerHTML = infos[4].schedule[1]
-        infoPanelWe.innerHTML = infos[4].schedule[2]
-        infoPanelTh.innerHTML = infos[4].schedule[3]
-        infoPanelFr.innerHTML = infos[4].schedule[4]
-        infoPanelSa.innerHTML = infos[4].schedule[5]
-        infoPanelSu.innerHTML = infos[4].schedule[6]
-        infoPanelPhone.innerHTML = infos[4].contact[0]
-        infoPanelEmail.innerHTML = infos[4].contact[1]
-        infoPanelWebsite.href = infos[4].website
-      });
-    }
-    if (lumen) {
-      lumen.addEventListener('click', () => {
-        this.scrolling.target = 0
-        infoPanel.style.right = '0'
-        infoPanelImage.src = infos[5].image
-        infoPanelLogo.src = infos[5].logo
-        infoPanelTitle.innerHTML = infos[5].title
-        infoPanelLead.innerHTML = infos[5].lead
-        infoPanelDescription.innerHTML = infos[5].description
-        infoPanelMo.innerHTML = infos[5].schedule[0]
-        infoPanelTu.innerHTML = infos[5].schedule[1]
-        infoPanelWe.innerHTML = infos[5].schedule[2]
-        infoPanelTh.innerHTML = infos[5].schedule[3]
-        infoPanelFr.innerHTML = infos[5].schedule[4]
-        infoPanelSa.innerHTML = infos[5].schedule[5]
-        infoPanelSu.innerHTML = infos[5].schedule[6]
-        infoPanelPhone.innerHTML = infos[5].contact[0]
-        infoPanelEmail.innerHTML = infos[5].contact[1]
-        infoPanelWebsite.href = infos[5].website
       });
     }
     if (closeIcn) {
